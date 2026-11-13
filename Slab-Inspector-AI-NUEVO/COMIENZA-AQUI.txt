@@ -1,0 +1,68 @@
+SLAB INSPECTOR AI - INSTALACION DESDE CERO (INDEPENDIENTE)
+========================================================
+
+Este proyecto contiene:
+  public/             App web instalable; archivos publicos
+  netlify/functions/   Conexión privada con PSA y diagnostico
+  netlify.toml        Configuración para Netlify
+  package.json        Facilita a Netlify iniciar el build
+
+IMPORTANTE DE SEGURIDAD
+- REVOCA el token PSA que compartiste en el chat y genera uno distinto.
+- JAMAS pegues el token en index.html, JavaScript publico, GitHub ni un chat.
+- El token PSA se configura SOLAMENTE dentro de Netlify > Environment variables.
+- El codigo aun NO detecta slabs falsos mediante inteligencia artificial.
+- Esta version verifica certificados y prepara fotos, no autentica el slab.
+
+RECOMENDADO: SUBIR UNA CARPETA Y PUBLICAR SIN TERMINAL, VIA GITHUB
+1. En GitHub (https://github.com/new) crea repositorio privado nuevo
+   por ejemplo: slab-inspector-ai (SIN agregar un README automatico).
+2. Dentro del nuevo repositorio entra a Add file > Upload files.
+3. Descomprime el ZIP y ARRASTRA TODO EL CONTENIDO de la carpeta
+   Slab-Inspector-AI-NUEVO (incluyendo public/, netlify/, netlify.toml,
+   package.json y el .gitignore si se ve). NO arrastres solo public/.
+4. Confirma la subida en GitHub (Commit changes).
+5. Netlify -> Add new project -> Import an existing project -> GitHub.
+   Conecta el repositorio nuevo que acabas de crear.
+6. Configuración:
+      Publish directory: public
+      Functions directory: netlify/functions (viene de netlify.toml)
+      Build command: npm run build (si Netlify pregunta)
+   Publica el proyecto.
+7. Netlify -> Project configuration -> Environment variables ->
+   Add a variable:
+      Key: PSA_API_TOKEN
+      Value: NUEVO token privado de PSA
+   Recomendado para restringir tus pruebas:
+      Key: INSPECTOR_PIN
+      Value: PIN o frase de acceso que solo tú conozcas.
+   Si tu plan ofrece Scope, habilita Functions; en el plan gratuito
+   All scopes es suficiente.
+8. Desde Netlify -> Deploys -> Trigger deploy -> Deploy project
+   para que el servidor lea variables nuevas.
+9. Abre https://TU-SITIO.netlify.app/.netlify/functions/estado
+   Debe devolver functionWorking:true y psaTokenConfigured:true.
+   No revela el token.
+10. Abre tu app, escribe tu PIN (si configurado), pon un certificado
+    PSA autentico y pulsa Consultar certificado en PSA.
+
+ALTERNATIVA: SIN GITHUB, DESDE TERMINAL MAC
+Con Node.js instalado: https://nodejs.org/
+1. Descomprime el zip en Descargas.
+2. Terminal:
+   cd ~/Downloads/Slab-Inspector-AI-NUEVO
+   npx netlify-cli login
+   npx netlify-cli deploy --prod
+3. Cuando pregunte, crea un SITIO NUEVO.
+4. Configura variables PSA_API_TOKEN y opcional INSPECTOR_PIN
+   en Netlify y REPITE el deploy de la terminal.
+5. Verifica /.netlify/functions/estado y prueba un certificado.
+
+NO se recomienda cargar unicamente public/ a Netlify Drop si quieres
+consultas PSA: puede publicar la interfaz SIN funcion de servidor.
+
+FUENTES OFICIALES
+https://www.psacard.com/publicapi/documentation
+https://docs.netlify.com/build/functions/get-started/
+https://docs.netlify.com/start/quickstarts/deploy-from-repository/
+https://docs.netlify.com/build/functions/environment-variables/

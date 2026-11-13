@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#121827" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Slab Inspector" />
+  <meta name="description" content="Slab Inspector AI: prototipo de inspección visual de slabs PSA Pokémon. No autentica cartas." />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <title>Slab Inspector AI — Consulta PSA</title>
+  <style>
+    :root{--ink:#1a1a1a;--muted:#686868;--line:#e6e4e1;--paper:#f8f7f5;--orange:#3b82f6;--card:#fff;--green:#16803f;--amber:#ab6b00}*{box-sizing:border-box}body{margin:0;background:var(--paper);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}button,input{font:inherit}button{cursor:pointer}a{color:inherit}header{background:#171717;color:#fff;padding:17px 20px;position:sticky;top:0;z-index:4;box-shadow:0 5px 18px #0001}.head{max-width:1060px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{font-weight:900;letter-spacing:.015em;font-size:23px;line-height:1}.brand span{color:var(--orange)}.head small{display:block;color:#bcbcbc;font-size:10px;letter-spacing:.1em;font-weight:600;margin-top:5px}.badge{border:1px solid #565656;color:#d8d8d8;border-radius:99px;padding:7px 11px;font-size:11px;white-space:nowrap}.container{max-width:1060px;margin:0 auto;padding:30px 20px 55px}.eyebrow{display:flex;align-items:center;gap:8px;color:var(--orange);font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;margin-bottom:9px}.dot{width:7px;height:7px;border-radius:100%;background:var(--orange)}h1{font-size:clamp(30px,5vw,53px);margin:0;letter-spacing:-.055em;line-height:1.02;max-width:790px}h1 em{font-style:normal;color:var(--orange)}.sub{max-width:700px;color:#626262;font-size:15px;line-height:1.5;margin:17px 0 25px}.notice{font-size:12px;color:#725323;background:#fff4d9;border:1px solid #f1dea8;padding:12px 14px;border-radius:10px;line-height:1.55;margin:0 0 20px}.columns{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(295px,.9fr);align-items:start;gap:18px}.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 5px 20px #00000006;padding:22px}.panel + .panel{margin-top:16px}.step{display:flex;align-items:center;gap:11px;margin:0 0 15px}.number{background:#171717;color:#fff;border-radius:9px;width:29px;height:29px;display:grid;place-items:center;font-size:13px;font-weight:800}.step h2{font-size:17px;margin:0;letter-spacing:-.025em}.step span{margin-left:auto;color:#898989;font-size:11px}.help{font-size:12px;color:#747474;line-height:1.5;margin:-5px 0 15px}.photos{display:grid;grid-template-columns:1fr 1fr;gap:11px}.upload{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:150px;border:1.5px dashed #d5d3d1;border-radius:12px;background:#fbfbfa;overflow:hidden;cursor:pointer;text-align:center;padding:12px}.upload:focus-within{outline:3px solid #3b82f633}.upload:hover{border-color:var(--orange)}.upload input{position:absolute;width:100%;height:100%;opacity:0;cursor:pointer;inset:0}.upload .symbol{font-size:30px;color:var(--orange);font-weight:300;line-height:1.1}.upload strong{font-size:13px;margin-top:9px}.upload small{font-size:11px;color:#888;margin-top:4px}.upload .preview{position:absolute;inset:0;background:#111;display:none}.upload .preview img{width:100%;height:100%;object-fit:contain}.upload .preview:after{content:'CAMBIAR FOTO';position:absolute;bottom:0;left:0;right:0;padding:8px;text-align:center;background:#171717c9;color:#fff;letter-spacing:.08em;font-weight:800;font-size:10px}.upload.has-photo .preview{display:block}.quality{display:none;position:absolute;z-index:1;left:9px;top:9px;border-radius:100px;font-size:10px;padding:5px 9px;background:#fff;color:#222;font-weight:700}.upload.has-photo .quality{display:block}.field-label{font-size:12px;font-weight:800;display:block;margin:9px 0 8px}.cert-row{display:flex;gap:9px;align-items:center}.cert-row input{min-width:0;flex:1;padding:13px;border:1px solid #d7d7d7;border-radius:9px;font-weight:700;letter-spacing:.08em;font-size:16px}.secondary{background:#171717;border:0;color:#fff;font-weight:700;border-radius:9px;padding:13px 15px;text-decoration:none;font-size:12px;display:inline-flex;gap:7px;align-items:center;justify-content:center}.secondary[aria-disabled="true"]{pointer-events:none;opacity:.4}.hint{color:#858585;font-size:11px;margin:9px 0 0;line-height:1.5}.primary{background:var(--orange);color:#fff;border:0;border-radius:10px;width:100%;font-weight:850;padding:16px;margin-top:16px;font-size:14px;box-shadow:0 4px 12px #3b82f61e}.primary:hover{background:#2563eb}.report{position:sticky;top:94px}.report h2{margin:0 0 6px;font-size:21px;letter-spacing:-.03em}.report .subtitle{margin:0 0 17px;font-size:12px;color:#777;line-height:1.5}.status{background:#f5f5f4;border-radius:12px;padding:15px;margin-bottom:14px}.status .kicker{font-size:10px;color:#777;letter-spacing:.1em;font-weight:900}.status h3{font-size:19px;margin:5px 0;letter-spacing:-.03em}.status p{font-size:12px;line-height:1.45;color:#666;margin:0}.row{display:flex;align-items:start;gap:10px;padding:12px 0;border-bottom:1px solid #eee}.row:last-child{border-bottom:0}.bullet{width:22px;height:22px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:#f1f0ed;color:#686868;font-size:12px;font-weight:900}.row strong{display:block;font-size:12px}.row small{display:block;color:#777;font-size:11px;margin-top:4px;line-height:1.45}.row.pass .bullet{background:#e8f7ef;color:var(--green)}.row.warn .bullet{background:#fff3db;color:var(--amber)}.fineprint{margin:17px 0 0;color:#888;font-size:11px;line-height:1.6}.hr{height:1px;background:#eee;margin:17px 0}.footer{margin-top:28px;color:#929292;font-size:11px;line-height:1.6}.progress{height:5px;background:#eee;border-radius:10px;margin-bottom:19px;overflow:hidden}.progress div{height:100%;width:0;background:var(--orange);transition:width .25s}.privacy{display:flex;align-items:center;gap:6px;font-size:11px;color:#777}.privacy svg{width:13px;height:13px}.hidden{display:none}#result{display:none}#result.visible{display:block}.details{white-space:pre-wrap;line-height:1.55;border:1px solid #eee;border-radius:8px;background:#f9f9f9;padding:10px;font-size:11px;color:#555;margin-top:10px}button:focus-visible,a:focus-visible{outline:3px solid #60a5fa;outline-offset:2px}@media(max-width:740px){.container{padding:25px 14px 38px}.columns{grid-template-columns:1fr}.report{position:static}.panel{padding:17px}.badge{font-size:10px}.photos{gap:9px}.upload{min-height:138px}.cert-row{flex-wrap:wrap}.cert-row a{width:100%}.brand{font-size:20px}}
+  </style>
+</head>
+<body>
+<header><div class="head"><div><div class="brand">SLAB <span>INSPECTOR AI</span></div><small>VERIFICACIÓN VISUAL · POKÉMON TCG</small></div><span class="badge">PROTOTIPO · NO OFICIAL</span></div></header>
+<main class="container">
+ <div class="eyebrow"><i class="dot"></i> SLAB INSPECTOR AI / PROTOTIPO</div>
+ <h1>Inspecciona tu slab.<br/><em>Compra con más información.</em></h1>
+ <p class="sub">Captura las imágenes de una carta Pokémon encapsulada por PSA. Esta versión permite preparar las fotografías, evaluar su calidad básica y consultar en vivo los datos de un certificado mediante la API de PSA, cuando esté configurada.</p>
+ <div class="notice"><strong>Versión experimental:</strong> la consulta de certificados PSA puede funcionar con un token de API configurado en Netlify. <strong>No</strong> autentica el slab físico ni ejecuta un detector de IA. Las fotografías permanecen en tu navegador.</div>
+ <div class="columns">
+  <div>
+   <section class="panel">
+    <div class="step"><div class="number">01</div><h2>Fotografía el slab</h2><span id="photoCount">0 / 4 fotos</span></div>
+    <p class="help">Usa fondo neutro, buena luz y evita los reflejos. La app futura podrá guiar el encuadre automáticamente.</p>
+    <div class="photos">
+     <label class="upload" id="box-front"><span class="symbol">＋</span><strong>Frente completo</strong><small>Con la carta visible</small><span class="quality"></span><span class="preview"><img alt="Vista previa de la foto frontal" /></span><input type="file" id="front" accept="image/*" aria-label="Subir frente completo" /></label>
+     <label class="upload" id="box-back"><span class="symbol">＋</span><strong>Reverso completo</strong><small>Con la carta visible</small><span class="quality"></span><span class="preview"><img alt="Vista previa de la foto posterior" /></span><input type="file" id="back" accept="image/*" aria-label="Subir reverso completo" /></label>
+     <label class="upload" id="box-labelFront"><span class="symbol">＋</span><strong>Etiqueta frontal</strong><small>Número, texto y grado</small><span class="quality"></span><span class="preview"><img alt="Vista previa de etiqueta frontal" /></span><input type="file" id="labelFront" accept="image/*" aria-label="Subir etiqueta frontal" /></label>
+     <label class="upload" id="box-labelBack"><span class="symbol">＋</span><strong>Etiqueta posterior</strong><small>QR / holograma</small><span class="quality"></span><span class="preview"><img alt="Vista previa de etiqueta posterior" /></span><input type="file" id="labelBack" accept="image/*" aria-label="Subir etiqueta posterior" /></label>
+    </div>
+   </section>
+   <section class="panel">
+    <div class="step"><div class="number">02</div><h2>Certificación PSA</h2></div>
+    <label for="cert" class="field-label">Número de certificado</label>
+    <div class="cert-row"><input id="cert" type="text" inputmode="numeric" placeholder="Ej. 12345678" autocomplete="off" maxlength="12" /><a class="secondary" id="psaLink" href="https://www.psacard.com/cert" target="_blank" rel="noopener noreferrer">Consultar en PSA ↗</a></div>
+    <p class="hint">Consulta de la API en nuestra web app. Un certificado válido no demuestra que el slab fotografiado sea auténtico.</p>
+    <label for="privatePin" class="field-label">PIN de acceso (solo si configuraste INSPECTOR_PIN en Netlify)</label>
+    <input id="privatePin" type="password" autocomplete="off" placeholder="PIN opcional para uso privado" style="width:100%;padding:12px;border:1px solid #d7d7d7;border-radius:9px" />
+    <button class="primary" id="lookupPSA" type="button">Consultar certificado en PSA</button>
+    <div id="lookupResult" class="details" style="display:none;white-space:pre-wrap" aria-live="polite"></div>
+    <button class="primary" id="inspect" type="button">Preparar informe de inspección →</button>
+   </section>
+  </div>
+  <aside class="panel report">
+    <h2>Informe de inspección</h2><p class="subtitle">Resumen preliminar del material aportado.</p>
+    <div class="progress"><div id="bar"></div></div>
+    <div class="status"><div class="kicker">ESTADO DE LA INSPECCIÓN</div><h3 id="statusTitle">Sin analizar</h3><p id="statusDesc">Agrega las fotografías necesarias para preparar el análisis.</p></div>
+    <div class="row" id="photosRow"><span class="bullet">—</span><div><strong>Fotografías</strong><small id="photosText">Aún no se han recibido fotos</small></div></div>
+    <div class="row" id="qualityRow"><span class="bullet">—</span><div><strong>Calidad fotográfica</strong><small id="qualityText">Pendiente de imágenes</small></div></div>
+    <div class="row" id="certRow"><span class="bullet">—</span><div><strong>Datos del certificado</strong><small id="certText">Pendiente de ingreso</small></div></div>
+    <div class="row" id="psaRow"><span class="bullet">—</span><div><strong>Consulta oficial PSA</strong><small id="psaText">Aún no consultado</small></div></div>
+    <div class="row"><span class="bullet">—</span><div><strong>Detección de anomalías con IA</strong><small>Modelo aún no implementado ni validado</small></div></div>
+    <div id="result"><div class="hr"></div><strong style="font-size:13px">Informe local</strong><div class="details" id="details"></div></div>
+    <p class="fineprint">La coincidencia de un número de certificado con los datos de PSA no prueba que el slab físico sea auténtico. El reconocimiento de etiquetas, la comparación de imágenes y la detección de falsificaciones todavía no están implementados.</p>
+    <div class="hr"></div><div class="privacy">🔒 Las imágenes solo se procesan en este navegador. No se almacenan ni se envían.</div>
+  </aside>
+ </div>
+ <p class="footer">Slab Inspector AI · Aplicación experimental independiente. No afiliada ni respaldada por PSA.</p>
+</main>
+<script>
+(()=>{
+ const keys=['front','back','labelFront','labelBack'];const names={front:'Frente completo',back:'Reverso completo',labelFront:'Etiqueta frontal',labelBack:'Etiqueta posterior'};
+ const pics={};let checks={};let psaLookup=null;const $=id=>document.getElementById(id);
+ async function lookupPSA(){
+   const n=cert.value.trim();
+   const b=$('lookupPSA'), result=$('lookupResult');
+   if(!/^\d{6,12}$/.test(n)){result.style.display='block';result.textContent='Ingresa un número PSA de 6 a 12 dígitos.';return}
+   b.disabled=true;b.textContent='Consultando PSA…';result.style.display='block';result.textContent='Consultando los datos oficiales…';
+   psaLookup=null;setRow('psaRow',null);$('psaText').textContent='Consultando PSA…';
+   try{
+     const headers={};const pin=$('privatePin').value;if(pin)headers['x-inspector-pin']=pin;
+     const res=await fetch('/.netlify/functions/psa-check?cert='+encodeURIComponent(n),{headers,cache:'no-store'});
+     const data=await res.json();
+     if(!res.ok||!data.ok)throw new Error(data.error||'No fue posible consultar PSA.');
+     if(n!==cert.value.trim())return;
+     psaLookup=data;
+     if(!data.found){result.textContent='PSA no encontró ese certificado. Verifica el número y compruébalo también en la página oficial.';$('psaText').textContent='Sin datos de PSA para este número';setRow('psaRow','warn');return}
+     const r=data.record||{};
+     const rows=[['Certificado',data.cert],['Año',r.year],['Marca',r.brand],['Carta',r.subject],['Set / variedad',r.variety],['Número de carta',r.cardNumber],['Grado',r.grade],['Categoría',r.category],['Etiqueta',r.labelType],['Estado',r.itemStatus]];
+     result.textContent=rows.filter(x=>x[1]!==null&&x[1]!==undefined&&x[1]!=='').map(x=>x[0]+': '+x[1]).join('\n')+'\n\n✓ Certificado encontrado en PSA. NO confirma autenticidad física del slab.';
+     $('psaText').textContent='Datos encontrados. Compara estos campos con tu slab.';setRow('psaRow','pass');
+   }catch(e){result.textContent=e.message;$('psaText').textContent='No se pudo completar la consulta';setRow('psaRow','warn')}
+   finally{b.disabled=false;b.textContent='Consultar certificado en PSA'}
+ }
+ $('lookupPSA').addEventListener('click',lookupPSA);
+ const cert=$('cert');cert.addEventListener('input',()=>{cert.value=cert.value.replace(/\D/g,'');const n=cert.value;psaLookup=null;setRow('psaRow',null);$('psaText').textContent='Aún no consultado';$('lookupResult').style.display='none';$('psaLink').href=n?`https://www.psacard.com/cert/${encodeURIComponent(n)}`:'https://www.psacard.com/cert';update();});
+ keys.forEach(k=>$(k).addEventListener('change',async ev=>{
+   const f=ev.target.files?.[0];if(!f)return;if(!f.type.startsWith('image/')){alert('Selecciona un archivo de imagen.');return}if(f.size>18e6){alert('La imagen supera los 18 MB. Selecciona una fotografía más liviana.');ev.target.value='';return}
+   if(pics[k])URL.revokeObjectURL(pics[k].url);
+   const url=URL.createObjectURL(f);pics[k]={url,file:f};const box=$('box-'+k);box.classList.add('has-photo');box.querySelector('img').src=url;box.querySelector('.quality').textContent='Comprobando foto...';checks[k]=await measure(url).catch(()=>({label:'No se pudo evaluar',ok:false}));box.querySelector('.quality').textContent=checks[k].label;update();
+ }));
+ async function measure(src){
+  const img=new Image();img.src=src;await img.decode();const c=document.createElement('canvas');const dim=256;const scale=Math.min(dim/img.width,dim/img.height);c.width=Math.max(1,Math.floor(img.width*scale));c.height=Math.max(1,Math.floor(img.height*scale));const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(img,0,0,c.width,c.height);const rgba=ctx.getImageData(0,0,c.width,c.height).data;let sum=0,csum=0,edges=0;const gray=new Float32Array(c.width*c.height);for(let i=0,j=0;i<rgba.length;i+=4,j++){const v=.2126*rgba[i]+.7152*rgba[i+1]+.0722*rgba[i+2];gray[j]=v;sum+=v;csum+=v*v}const lum=sum/gray.length;const contrast=Math.sqrt(Math.max(0,csum/gray.length-lum*lum));for(let y=1;y<c.height-1;y++)for(let x=1;x<c.width-1;x++){const p=y*c.width+x;edges+=Math.abs(4*gray[p]-gray[p-1]-gray[p+1]-gray[p-c.width]-gray[p+c.width])}const sharpness=edges/Math.max(1,(c.width-2)*(c.height-2));const low=lum<47,high=lum>224,flat=contrast<23,soft=sharpness<8;if(low)return{label:'Poca luz',ok:false};if(high)return{label:'Sobreexpuesta',ok:false};if(flat)return{label:'Poco contraste',ok:false};if(soft)return{label:'Revisar nitidez',ok:false};return{label:'Imagen recibida',ok:true};
+ }
+ function setRow(id,state){const el=$(id);el.classList.remove('pass','warn');if(state)el.classList.add(state);el.querySelector('.bullet').textContent=state==='pass'?'✓':state==='warn'?'!':'—'}
+ function update(){const n=Object.keys(pics).length;const c=cert.value;const qualityIssues=Object.values(checks).filter(x=>!x.ok).length;const valid=/^\d{6,12}$/.test(c);$('photoCount').textContent=`${n} / 4 fotos`;$('bar').style.width=`${Math.round((n/4)*75+(valid?25:0))}%`;$('photosText').textContent=`${n} de 4 vistas cargadas`;$('qualityText').textContent=n?qualityIssues?`${qualityIssues} fotografía(s) requieren revisión visual`:'Comprobación orientativa de iluminación y nitidez':'Pendiente de imágenes';$('certText').textContent=!c?'Número no ingresado':valid?'Formato numérico compatible; usa «Consultar certificado en PSA»':'Revisa el formato del número';setRow('photosRow',n===4?'pass':n?'warn':null);setRow('qualityRow',n?(qualityIssues?'warn':'pass'):null);setRow('certRow',valid?'pass':c?'warn':null);$('statusTitle').textContent=n===4&&valid?'Material preparado':n?'Captura en curso':'Sin analizar';$('statusDesc').textContent=n===4&&valid?'Las vistas y el número están listos para una futura inspección automática. No se ha evaluado autenticidad.':n?'Faltan vistas o datos para preparar la inspección.':'Agrega las fotografías necesarias para preparar el análisis.';}
+ $('inspect').addEventListener('click',()=>{const n=Object.keys(pics).length;const missing=keys.filter(k=>!pics[k]).map(k=>names[k]);const qualityIssues=Object.entries(checks).filter(([,v])=>!v.ok).map(([k,v])=>`${names[k]}: ${v.label}`);const valid=/^\d{6,12}$/.test(cert.value);$('result').classList.add('visible');$('details').textContent=`Fotos recibidas: ${n}/4\n${missing.length?'Faltantes: '+missing.join(', '):'Todas las vistas aportadas'}\n${qualityIssues.length?'Revisar: '+qualityIssues.join('; '):'Calidad básica: sin alertas orientativas'}\nCertificado: ${cert.value||'(no ingresado)'}\nFormato del número: ${valid?'compatible':'pendiente / revisar'}\nConsulta oficial PSA: ${psaLookup?.found?'CERTIFICADO ENCONTRADO':psaLookup?'NO ENCONTRADO':'NO REALIZADA'}\nComparación SecureScan: NO REALIZADA\nInspección de IA: NO REALIZADA\nResultado de autenticidad: NO CONCLUYENTE`; $('result').scrollIntoView({behavior:'smooth',block:'nearest'});});update();
+})();
+</script>
+<script>if ("serviceWorker" in navigator && location.protocol.startsWith("http")) { window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(() => {})); }</script>
+</body>
+</html>
