@@ -1,0 +1,11 @@
+[build]
+  base = "Slab-Inspector-AI-NUEVO"
+  publish = "public"
+  functions = "netlify/functions"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
